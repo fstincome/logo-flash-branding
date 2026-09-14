@@ -1,1 +1,0 @@
-ALTER TABLE public.federations ADD COLUMN IF NOT EXISTS nbre_membres integer NOT NULL DEFAULT 0;
