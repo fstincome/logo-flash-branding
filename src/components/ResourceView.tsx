@@ -29,6 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Combobox } from "@/components/ui/combobox";
 import {
   Table,
   TableBody,
@@ -454,11 +455,14 @@ function FieldInput({
           items={(field.options ?? []).map((o) => ({ value: o, label: o }))}
         />
       ) : field.refModule ? (
-        <SelectField
-          field={field}
+        <Combobox
+          id={field.name}
+          disabled={Boolean(hint)}
+          placeholder={hint ? "Indisponible" : "Sélectionner…"}
+          searchPlaceholder={`Rechercher ${MODULE_MAP[field.refModule!]?.title.toLowerCase() ?? "…"}…`}
+          emptyMessage="Aucun compte ne correspond."
           value={value}
           onChange={onChange}
-          disabled={Boolean(hint)}
           items={options.map((o) => ({
             value: String(o["id"]),
             label: rowLabel(MODULE_MAP[field.refModule!]!, o),

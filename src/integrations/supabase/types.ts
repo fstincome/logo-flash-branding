@@ -1441,42 +1441,62 @@ export type Database = {
       }
       operations: {
         Row: {
+          beneficiaire: string | null
           compte: string | null
           created_at: string | null
           date_operation: string | null
           description: string | null
           id: string
+          imputation_id: string | null
           legacy_id: string | null
+          libelle: string | null
           montant: number | null
           reference: string | null
+          statut: string
           type_operation: string | null
           updated_at: string | null
         }
         Insert: {
+          beneficiaire?: string | null
           compte?: string | null
           created_at?: string | null
           date_operation?: string | null
           description?: string | null
           id?: string
+          imputation_id?: string | null
           legacy_id?: string | null
+          libelle?: string | null
           montant?: number | null
           reference?: string | null
+          statut?: string
           type_operation?: string | null
           updated_at?: string | null
         }
         Update: {
+          beneficiaire?: string | null
           compte?: string | null
           created_at?: string | null
           date_operation?: string | null
           description?: string | null
           id?: string
+          imputation_id?: string | null
           legacy_id?: string | null
+          libelle?: string | null
           montant?: number | null
           reference?: string | null
+          statut?: string
           type_operation?: string | null
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "operations_imputation_id_fkey"
+            columns: ["imputation_id"]
+            isOneToOne: false
+            referencedRelation: "imputations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       partenaires: {
         Row: {
