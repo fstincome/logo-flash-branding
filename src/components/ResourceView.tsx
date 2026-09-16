@@ -467,7 +467,7 @@ function FieldInput({
             label: rowLabel(MODULE_MAP[field.refModule!]!, o),
           }))}
         />
-      ) : field.type === "number" ? (
+      ) : (
         <Input
           id={field.name}
           type={field.type === "number" ? "number" : field.type === "date" ? "date" : "text"}
